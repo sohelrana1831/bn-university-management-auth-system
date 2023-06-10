@@ -1,7 +1,8 @@
-import express, { Application } from 'express';
+import express, { Application, NextFunction, Request, Response } from 'express';
 import cors from 'cors';
-import globalErrorHandler from './middleware/globalErrorHandler';
+import globalErrorHandler from './app/middleware/globalErrorHandler';
 import router from './app/routers';
+import httpStatus from 'http-status';
 const app: Application = express();
 
 app.use(cors());
@@ -19,6 +20,22 @@ app.use('/api/v1', router);
 //   //   Promise.reject(new Error('I am new error hear!'))
 // })
 
+// global Error Handler
 app.use(globalErrorHandler);
+
+// if API not found
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.status(httpStatus.NOT_FOUND).json({
+    success: false,
+    message: 'Not Found !',
+    errorMessage: [
+      {
+        path: req.originalUrl,
+        message: 'API not found !',
+      },
+    ],
+  });
+  next();
+});
 
 export default app;
