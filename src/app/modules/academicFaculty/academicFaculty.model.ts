@@ -6,7 +6,12 @@ import {
 
 const academicFacultyScheme = new Schema<IAcademicFaculty>(
   { title: { type: String, required: true, unique: true } },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+  }
 );
 
 export const AcademicFacultyModel = model<

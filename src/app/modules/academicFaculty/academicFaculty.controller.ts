@@ -52,7 +52,7 @@ const getSingleFaculty = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IAcademicFaculty>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Single Semester data get successfully !',
+    message: 'Single Faculty data get successfully !',
     data: result,
   });
 });
@@ -71,7 +71,7 @@ const updateFaculty = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IAcademicFaculty>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Update Semester successfully !',
+    message: 'Update Faculty successfully !',
     data: result,
   });
 });
@@ -83,7 +83,7 @@ const deleteFaculty = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IAcademicFaculty>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Delete Semester successfully !',
+    message: 'Delete Faculty successfully !',
     data: result,
   });
 });
