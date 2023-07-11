@@ -6,6 +6,7 @@ import httpStatus from 'http-status';
 
 const createStudent = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
+    // console.log(req.cookies, 'cookies');
     const { student, ...userData } = req.body;
     const result = await UserServices.createStudent(student, userData);
 
@@ -25,28 +26,22 @@ const createStudent = catchAsync(
   }
 );
 
-// const createFaculty = catchAsync(
-//   async (req: Request, res: Response, next: NextFunction) => {
-//     const { faculty, ...userData } = req.body;
-//     const result = await UserServices.createFaculty(faculty, userData);
+const createFaculty = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { faculty, ...userData } = req.body;
+    const result = await UserServices.createFaculty(faculty, userData);
 
-//     // res.status(200).json({
-//     //   success: true,
-//     //   message: 'User create successfully',
-//     //   data: result,
-//     // });
-
-//     sendResponse(res, {
-//       statusCode: httpStatus.OK,
-//       success: true,
-//       message: 'Faculty create successfully',
-//       data: result,
-//     });
-//     next();
-//   }
-// );
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Faculty create successfully',
+      data: result,
+    });
+    next();
+  }
+);
 
 export const UserController = {
   createStudent,
-  // createFaculty
+  createFaculty,
 };

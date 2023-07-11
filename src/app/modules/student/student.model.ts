@@ -19,7 +19,7 @@ const StudentScheme = new Schema<IStudent, StudentModel>(
     gender: { type: String, required: true, enum: studentGender },
     dateOfBirth: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    contactNo: { type: String, required: true },
+    contactNo: { type: String, required: true, unique: true },
     emergencyContactNo: { type: String, required: true },
     presentAddress: { type: String, required: true },
     permanentAddress: { type: String, required: true },
