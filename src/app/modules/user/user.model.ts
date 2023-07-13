@@ -41,11 +41,10 @@ const UserSchema = new Schema<IUser, Record<string, never>, IUserMethods>(
 UserSchema.methods.isUserExist = async function (
   id: string
 ): Promise<Partial<IUser> | null> {
-  const user = await User.findOne(
+  return await User.findOne(
     { id },
     { id: 1, password: 1, role: 1, needsPasswordChange: 1 }
   );
-  return user;
 };
 
 //  Password Match instance methods
